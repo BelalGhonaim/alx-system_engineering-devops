@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+#script that displays To infinity and beyond indefinitely.
+while :: do echo ; sleep2; done
