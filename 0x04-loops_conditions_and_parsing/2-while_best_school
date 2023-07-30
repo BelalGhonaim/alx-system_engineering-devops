@@ -5,5 +5,5 @@ best=0
 while [ $best -lt 10 ]
 do
 	echo "Best School"
-	let best=best+1
+	(( best++ ))
 done
