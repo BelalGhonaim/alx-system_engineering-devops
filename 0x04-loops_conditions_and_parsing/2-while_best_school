@@ -4,6 +4,6 @@
 best=0
 while [ $best -lt 10 ]
 do
-	echo "best School"
+	echo "Best School"
 	let best=best+1
 done
