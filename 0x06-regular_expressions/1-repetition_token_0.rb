@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-puts ARGV[0].scan(/htn/).join
-puts ARGV[0].scan(/hbtn/).join
-puts ARGV[0].scan(/hbbtn/).join
-puts ARGV[0].scan(/hbbbtn/).join
+puts ARGV[0].scan(/hbttn/).join
+puts ARGV[0].scan(/hbtttn/).join
+puts ARGV[0].scan(/hbttttn/).join
+puts ARGV[0].scan(/hbtttttn/).join
