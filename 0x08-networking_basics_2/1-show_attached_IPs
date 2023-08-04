@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#show all activ IPS 
+
+ifconfig | awk -F "[: ]+" "/inet addr:/{print $4}"
