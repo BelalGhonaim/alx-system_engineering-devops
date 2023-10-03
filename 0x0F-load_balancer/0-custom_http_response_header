@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
-# Bash script during your web server project of the custom HTTP header must be X-Served-By
-apt-get update
-apt-get install -y nginx
-
-SERVER_NAME="$(hostname)"
-# i don't have a server 
-echo "add_header X-Served-By $SERVER_NAME;" >> /etc/nginx/conf.d/custom_response_header.conf
-systemctl restart nginx
+# Configure Nginx so that its HTTP response contains a custom heade
+apt-get -y update
+apt-get -y install nginx
+echo "Hello World!" > /var/www/html/index.nginx-debian.html
+echo "The First Page" > /usr/share/nginx/html/custom_404.html
+# i have no server
+sed -i 's/server_name _;/server_name _;\n\trewrite ^\/redirect_me https:\/\/github.com\/belalghonaim99 permanent;\n\n\error_page 404 \/custom_404.html;\n\tlocation = \/custom_404.html {\n\t\troot \/usr\/share\/nginx\/html;\n\t\tinternal;\n\t}/' /etc/nginx/sites-available/default
+sed -i 's/include \/etc\/nginx\/sites-enabled\/\*;/include \/etc\/nginx\/sites-enabled\/\*;\n\tadd_header X-Served-By "$HOSTNAME";/' /etc/nginx/nginx.conf
+service nginx start
