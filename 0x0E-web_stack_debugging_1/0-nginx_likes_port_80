@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-#  Bash script that configures a server on port 80 active IPv4 
-rm /etc/nginx/sites-enabled/default
-ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
-service nginx restart
