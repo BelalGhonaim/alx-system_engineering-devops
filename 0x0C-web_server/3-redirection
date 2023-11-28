@@ -4,7 +4,7 @@
 
 apt-get update
 apt-get install -y nginx
-echo "Hello World" > /etc/nginx/html/index.html
+echo "301 Moved Permanently" > /etc/nginx/html/index.html
 echo "server {
     listen 80;
     listen [::]:80 default_server;
