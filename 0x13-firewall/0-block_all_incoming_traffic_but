@@ -2,7 +2,10 @@
 # Configure ufw so that it blocks all incoming traffic, except
 # the following TCP ports 22(ssh) 443(https ssl) and 80(http
 sudo ufw default deny incoming
+sudo ufw default allow outgoing
 sudo ufw allow 22/tcp
-sudo ufw allow 80/tcp
 sudo ufw allow 443/tcp
 sudo ufw enable
+sudo ufw allow 80/tcp
+sudo ufw enable
+sudo ufw status verbose
