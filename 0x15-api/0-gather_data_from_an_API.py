@@ -12,7 +12,7 @@ if __name__ == "__main__":
     completed = []  # Define the 'completed' list
 
     for todos in todos:
-        if todos.get("done") is True:
+        if todos.get("completed") is True:
             completed.append(todos.get("title"))
 
     print("Employee {} is done with tasks({}/{}):"
