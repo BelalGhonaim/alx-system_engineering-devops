@@ -11,13 +11,10 @@ if __name__ == "__main__":
     username = user.get("username")
     todos = requests.get(url + "todos", params={"userId": user_id}).json()
 
-    with open("{}.csv".format(user_id), "w", newline='') as csvfile:
+    with open("{}.csv".format(user_id), "w", newline="") as csvfile:
         writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
-        writer.writerow(["USER_ID", "USERNAME",
-                         "TASK_COMPLETED_STATUS", "TASK_TITLE"])
 
-        for task in todos:
-            completed_status = ("completed" if task.get("completed")
-                                else "not completed")
+        for todo in todos:
             writer.writerow([user_id, user.get("username"),
-                             completed_status, task.get("title")])
+                             todo.get("title"),
+                             todo.get("completed")])
