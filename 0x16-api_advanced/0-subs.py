@@ -8,7 +8,6 @@ def number_of_subscribers(subreddit):
     sub_headers = {
         "User-Agent": "linux:0x16.api.advanced:v1.0.0 (by /u/bdov_)"
     }
-    """ add requests module and add headers func """
     sub_inf = requests.get(url_sub, headers=sub_headers, allow_redirects=False)
     if sub_inf.status_code == 404:
         return 0
