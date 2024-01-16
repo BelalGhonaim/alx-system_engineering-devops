@@ -4,14 +4,15 @@
 
 
 def number_of_subscribers(subreddit):
-    import requests
-
-    num_of_sub = requests.get("https://www.reddit.com/r/{}/about.json"
-                                .format(subreddit),
-                                headers={"User-Agent": "My-User-Agent"},
-                                allow_redirects=False)
-    if num_of_sub.status_code >= 300:
+    """Return  total number of subscribers on  given subreddit."""
+    url_sub = "https://www.reddit.com/r/{}/about.json".format(subreddit)
+    sub_headers = {
+        "User-Agent": "linux:0x16.api.advanced:v1.0.0 (by /u/bdov_)"
+    }
+    """ add requests module and add headers func """
+    sub_response_info = requests.get(url_sub, headers=sub_headers, allow_redirects=False)
+    if sub_response_info.status_code == 404:
         return 0
-
-
-    return num_of_sub.json().get("data").get("subscribers")
+    response = sub_response_info.json().get("data")
+    
+    return response.get("subscribers")
