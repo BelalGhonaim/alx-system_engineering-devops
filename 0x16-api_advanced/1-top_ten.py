@@ -7,6 +7,17 @@ import requests
 
 
 def top_ten(subreddit):
+
+
+    url_sub = requests.get("https://www.reddit.com/r/{}/hot.json?limit=10"
+                        .format(subreddit),
+                        headers={"User-Agent": "My-User-Agent"},
+                        allow_redirects=False)
+    if url_sub.status_code >= 300:
+        print('None')
+    else:
+        [print(titles.get("data").get("title"))
+            for titles in url_sub.json().get("data").get("children")]
     sub_url = "https://www.reddit.com/r/{}/hot/.json".format(subreddit)
     sub_head = {
         "User-Agent": "linux:0x16.api.advanced:v1.0.0 (by /u/bdov_)"
